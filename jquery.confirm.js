@@ -74,7 +74,9 @@
                 } else {
                     var url = e && (('string' === typeof e && e) || (e.currentTarget && e.currentTarget.attributes['href'].value));
                     if (url) {
-                        if (options.post) {
+                        if (options.post
+                           || typeof options.post == "undefined" && $.confirm.options.post
+                        ) {
                             var form = $('<form method="post" class="hide" action="' + url + '"></form>');
                             $("body").append(form);
                             form.submit();
